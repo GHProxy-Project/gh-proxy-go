@@ -4,6 +4,9 @@ on:
   release:
     types: [created]  # 当创建新的 Release 时触发
 
+permissions:
+    contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,3 +31,4 @@ jobs:
           asset_path: ./mirrors
           asset_name: mirrors
           asset_content_type: application/octet-stream
+          token: ${{ secrets.GITHUB_TOKEN }}
