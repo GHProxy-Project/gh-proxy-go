@@ -1,0 +1,30 @@
+name: Build and Upload Go Executable
+
+on:
+  release:
+    types: [created]  # 当创建新的 Release 时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.23.2'
+
+      - name: Build Go Executable
+        run: |
+          go build -o mirrors .
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./mirrors
+          asset_name: mirrors
+          asset_content_type: application/octet-stream

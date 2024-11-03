@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  mirrors:
+    image: feassh/mirrors:1.0.0
+    container_name: mirrors
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./config.json:/app/config.json

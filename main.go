@@ -16,9 +16,10 @@ import (
 )
 
 const (
-	sizeLimit = 1024 * 1024 * 1024 * 10 // 允许的文件大小，默认10GB
-	host      = "0.0.0.0"               // 监听地址
-	port      = 8080                    // 监听端口
+	// 允许的文件大小，默认10GB
+	sizeLimit = 1024 * 1024 * 1024 * 10
+	host      = "0.0.0.0"
+	port      = 4444
 )
 
 var (
@@ -65,10 +66,6 @@ func main() {
 			loadConfig()
 		}
 	}()
-
-	router.StaticFile("/", "./public/index.html")
-	router.StaticFile("/favicon.ico", "./public/favicon.ico")
-	router.StaticFile("/logo.png", "./public/logo.png")
 
 	router.NoRoute(handler)
 
