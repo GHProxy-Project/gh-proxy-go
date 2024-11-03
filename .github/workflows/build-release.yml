@@ -25,9 +25,9 @@ jobs:
           go build -o mirrors .
 
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./mirrors
-          asset_name: mirrors
-          asset_content_type: application/octet-stream
+          tag: ${{ github.event.release.tag_name }}  # 使用创建的 Release 标签
+          files: ./mirrors  # 上传的文件路径
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
