@@ -31,4 +31,4 @@ jobs:
           asset_path: ./mirrors
           asset_name: mirrors
           asset_content_type: application/octet-stream
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
